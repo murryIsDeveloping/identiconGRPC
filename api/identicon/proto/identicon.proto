@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package identiconpb;
+
+option go_package = "identiconpb";
+
+message Response {
+    bytes fileChunk = 1;
+}
+
+message Request {
+    string fileName = 1;
+    int32 size = 2;
+    int32 pixelsize = 3;
+}
+
+service IdenticonService {
+    rpc GetIdenticon (Request) returns (stream Response);
+}
